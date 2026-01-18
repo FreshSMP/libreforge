@@ -78,6 +78,11 @@ object PaperEffectDataFixer : Listener {
         }
 
         val dispatcher = event.entity.toDispatcher()
+
+        for ((effect, holder) in dispatcher.providedActiveEffects) {
+            effect.disable(dispatcher, holder)
+        }
+
         dispatcher.purgePreviousHolders()
     }
 }
